@@ -1,5 +1,7 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.2)
 project(monitor)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(Curses REQUIRED)
 include_directories(${CURSES_INCLUDE_DIRS})
@@ -11,5 +13,5 @@ add_executable(monitor ${SOURCES})
 
 set_property(TARGET monitor PROPERTY CXX_STANDARD 17)
 target_link_libraries(monitor ${CURSES_LIBRARIES})
-# TODO: Run -Werror in CI.
-target_compile_options(monitor PRIVATE -Wall -Wextra)
+# DONE: Run -Werror in CI.
+target_compile_options(monitor PRIVATE -Wall -Wextra -Werror)
